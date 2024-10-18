@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <img class="profile-avatar" src="https://via.placeholder.com/180x180" alt="">
-            <h1 class="profile-name">Gian Souza</h1>
-            <h2 class="profile-username">@pedrohenriquee</h2>
+            <img id="avatar" class="profile-avatar" src="https://via.placeholder.com/180x180" alt="">
+            <h1 id="name" class="profile-name">Pedro Henrique</h1>
+            <h2 id="username" class="profile-username">@pedrohenriquee</h2>
             <ul>
                 <li class="numbers-item">
                     <h4>Repositórios</h4>
@@ -39,7 +40,7 @@
             const followingElement = document.querySelector('#following');
             const linkElement = document.querySelector('#link');
 
-            fetch('https://api.github.com/user/Pedrohenriquee2')
+            fetch('https://api.github.com/users/PedroHenriquee2')
             .then(function(res){
                 return res.json();
             })
@@ -49,14 +50,10 @@
                 avatarElement.src = json.avatar_url;
                 followingElement.innerText = json.following;
                 followersElement.innerText = json.followers;
-                repos.innerText = json.public_repos;
+                reposElement.innerText = json.public_repos;
                 linkElement.href = json.html_url;
             })
         })
-        .catch(function(eror){
-            console.error('Houve um problema com a requisição', error);
-            nameElement.innerText = 'Erro ao carregar os dados';
-        });
     </script>
 </body>
 </html>
